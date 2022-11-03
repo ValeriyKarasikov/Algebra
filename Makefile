@@ -8,7 +8,7 @@ generate:
 	cmake ..
 
 build: generate
-	cmake --build ./$(folder)
+	cmake --build ./$(folder) --parallel
 
 clean:
 	rm -rf $(folder)
