@@ -31,7 +31,7 @@ include_directories(${HDR}/${VRBL})
 #-------------------------------------------------------------------------------
 
 # architecture
-set(ARCH_INTF ${HDR}/${ARCH}/interface.hpp     ${SRC}/${ARCH}/interface.cpp)
+set(ARCH_INTR ${HDR}/${ARCH}/interpreter.hpp   ${SRC}/${ARCH}/interpreter.cpp)
 set(ARCH_POST ${HDR}/${ARCH}/postprocessor.hpp ${SRC}/${ARCH}/postprocessor.cpp)
 set(ARCH_PREP ${HDR}/${ARCH}/preprocessor.hpp  ${SRC}/${ARCH}/preprocessor.cpp)
 set(ARCH_PROC ${HDR}/${ARCH}/processor.hpp     ${SRC}/${ARCH}/processor.cpp)
@@ -49,7 +49,7 @@ set(VRBL_LIBR ${HDR}/${VRBL}/library.hpp  ${SRC}/${VRBL}/library.cpp)
 #-------------------------------------------------------------------------------
 
 # architecture
-add_library(_intf STATIC ${ARCH_INTF})
+add_library(_intr STATIC ${ARCH_INTR})
 add_library(_post STATIC ${ARCH_POST})
 add_library(_prep STATIC ${ARCH_PREP})
 add_library(_proc STATIC ${ARCH_PROC})
@@ -81,7 +81,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 # main
 #target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE _intf)
-target_link_libraries(${PROJECT_NAME} PRIVATE _intf)
+target_link_libraries(${PROJECT_NAME} PRIVATE _intr)
 
 #-------------------------------------------------------------------------------
 
