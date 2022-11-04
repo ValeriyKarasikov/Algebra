@@ -48,7 +48,8 @@ map <F6> :make build <CR>
 " Clean using makeprg:
 map <F7> :make clean <CR>
 " Run program in vertical tab:
-map <F8> :vert term ./build/launcher while :; do sl; done <CR>
+map <F8> :vert term ./build/Algebra while :; do sl; done <CR>
+"map <F8> :vert term ./build/launcher while :; do sl; done <CR>
 "map <F8> :vert term ./build/launcher -term 2> >(tee -a error.log >&2) while :; do sl; done <CR>
 "}
 
