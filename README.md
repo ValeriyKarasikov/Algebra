@@ -1,26 +1,11 @@
-# 05-102
-Коллективное задание для реализации в ООП на ЯП С++ (группа 05-102).
+# Коллективное задание для реализации в ООП на ЯП С++
 
-architecture:
-- data
-- preprocessor
-- procecssor
-- postprocessor
-- interface
+Необходимо написать алгебру для скаляров/векторов/матриц с применением аппарата
+переменных. Входные данные требуется принимать из текстового/бинарного *файлов*.
 
-libraries:
-- exception
-- database
-- syntax
-- terminal
-- file
-
-task:
-- написать алгебру перемножения скаляров/векторов/матриц с применением аппарата
-  переменных;
-- реализовать чтение входных данных из текстового/бинарного файла;
-
-groups:
-- hard: database (!), terminal, file
-- middle: syntax (!), exception
-- easy: data, preprocessor, processor, postprocessor, interface (!)
+````
+int main()
+{
+    return 0;
+}
+```
