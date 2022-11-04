@@ -4,7 +4,7 @@
 
 1. Определение архитектуры программы (директория `architecture`).
 2. Реализация статических библиотек для обработки исключений и взаимодействия с
-   внешними потоками данных, а также реализация "движка" - линейной алгебры для
+   внешними потоками данных, а также реализация "движка" -- линейной алгебры для
    скаляров, векторов и матриц (директория `libraries`).
 3. Создание аппарата переменных на основе командного интерфейса программы
    (директория `variables`).
@@ -120,7 +120,7 @@ struct undefined_data;   ! не задано значение параметра
 ```cpp
 void read(std::string& line, std::string_view path);
 void write(const std::string& line, std::string_view path);
-template<typename Op> // Op - operation (predicate)
+template<typename Op> // Op -- operation (predicate)
 void stream(std::filesystem::path path, std::ios_base::openmode om, Op op);
 ```
 
@@ -141,7 +141,7 @@ std::string toUppercase(std::string_view line);
 объявления функций:
 
 ```cpp
-// prefix - некоторое сообщение перед вводом, например, текст "enter here >> "
+// prefix -- некоторое сообщение перед вводом, например, текст "enter here >> "
 void input(std::string& line, std:string_view prefix);
 template<char end = '\n', char sep = ' ', typename... T>
 void display(const T&... t);
