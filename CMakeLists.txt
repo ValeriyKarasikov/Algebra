@@ -37,6 +37,7 @@ set(ARCH_PREP ${HDR}/${ARCH}/preprocessor.hpp  ${SRC}/${ARCH}/preprocessor.cpp)
 set(ARCH_PROC ${HDR}/${ARCH}/processor.hpp     ${SRC}/${ARCH}/processor.cpp)
 
 # libraries
+set(LIBR_ALGB ${HDR}/${LIBR}/algebra.hpp   ${SRC}/${LIBR}/algebra.cpp)
 set(LIBR_EXCP ${HDR}/${LIBR}/exception.hpp ${SRC}/${LIBR}/exception.cpp)
 set(LIBR_FILE ${HDR}/${LIBR}/file.hpp      ${SRC}/${LIBR}/file.cpp)
 set(LIBR_SNTX ${HDR}/${LIBR}/syntax.hpp    ${SRC}/${LIBR}/syntax.cpp)
@@ -55,6 +56,7 @@ add_library(_prep STATIC ${ARCH_PREP})
 add_library(_proc STATIC ${ARCH_PROC})
 
 # libraries
+add_library(_algb STATIC ${LIBR_ALGB})
 add_library(_excp STATIC ${LIBR_EXCP})
 add_library(_file STATIC ${LIBR_FILE})
 add_library(_sntx STATIC ${LIBR_SNTX})

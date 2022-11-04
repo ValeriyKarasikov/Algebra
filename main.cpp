@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "interface.hpp"
+#include "interpreter.hpp"
 
 int main()
 {
