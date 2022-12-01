@@ -3,7 +3,7 @@
 // #include <concepts>
 
 #include <cstdint> // std::size_t
-#include "library.hpp"
+#include "/home/KhamzD/Документы/CPP/Algebra-libraries/headers/variables/library.hpp"
 
 namespace alg
 {
@@ -17,8 +17,11 @@ namespace alg
     template <typename T>
     T sum(const T &first, const T &second);
 
-    template <typename T, std::size_t N>
-    void pow(T &t, const N &n);
+    template <typename T>
+    void pow(T &t, const std::size_t &n){
+        int s;
+        float xaf;
+    }
 
     template <typename T1, typename T2>
     void sum(const T1 &t1, const T2 &t2) noexcept(true);
