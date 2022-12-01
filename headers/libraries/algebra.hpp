@@ -18,89 +18,56 @@ namespace alg
     T sum(const T &first, const T &second);
 
     template <typename T>
-    void pow(T &t, const std::size_t &n){
-        int s;
-        float xaf;
-    }
+    void pow(T &t, const std::size_t &n);
 
     template <typename T1, typename T2>
     void sum(const T1 &t1, const T2 &t2) noexcept(true);
 
     template <typename T1, typename T2>
     void del(const T1 &t1, const T2 &t2) noexcept(false);
-    // template <class T>
-    // concept Value = std::floating_point<T>;
-    // template <Value V>
-    // V sum(const V &first, const V &second);
 
-    /*
-
- template <typename T>
- class function
- {
- public:
-     using size_type = std::size_t;
-
-
-     template <typename T>
-     void inc(T &t) noexcept;
-
-     template <typename T, std::size_t N>
-     void pow(T &t, const N &n);
-
-     template <typename T1, typename T2>
-     void sum(const T1 &t1, const T2 &t2) noexcept(true);
-
-     template <typename T1, typename T2>
-     void del(const T1 &t1, const T2 &t2) noexcept(false);
-
- protected:
- private:
- };
 }
+
 template <typename T>
-void inc(T &t) noexcept;
-
-template <typename T, std::size_t N>
-void pow(T &t, const N &n)
+T alg::inc(T &t) noexcept
 {
- i=0;
- if (n = 0)
- {
-     t = 1;
-     return;
- }
- else if (n > 0)
- {
-     while (n > i)
-     {
-         t *= t;
-         i += 1;
-     }
-     return;
- }
- else if (n < 0)
- {
-     while (n < i)
-     {
-         t *= t;
-         i -= 1;
-     }
-     t = 1 / t;
-     return;
- }
-}
-
-template <typename T1, typename T2>
-void sum(const T1 &t1, const T2 &t2) noexcept(true);
-
-template <typename T1, typename T2>
-void del(const T1 &t1, const T2 &t2) noexcept(false);
-*/
+    return t++;
 }
 
 template <typename T>
 T alg::sum(const T &first, const T &second)
 {
     return first + second;
+}
+
+template <typename T>
+void alg::pow(T &t, const std::size_t &n)
+{
+    {
+        std::size_t i = 0;
+        if (n = 0)
+        {
+            t = 1;
+            return;
+        }
+        else if (n > 0)
+        {
+            while (n > i)
+            {
+                t *= t;
+                i += 1;
+            }
+            return;
+        }
+        else if (n < 0)
+        {
+            while (n < i)
+            {
+                t *= t;
+                i -= 1;
+            }
+            t = 1 / t;
+            return;
+        }
+    }
 }
