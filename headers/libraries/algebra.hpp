@@ -4,6 +4,7 @@
 
 #include <cstdint> // std::size_t
 #include "/home/KhamzD/Документы/CPP/Algebra-libraries/headers/variables/library.hpp"
+#include "exception.hpp"
 
 namespace alg
 {
@@ -13,9 +14,6 @@ namespace alg
 
     template <typename T>
     void inc(T &t) noexcept;
-
-    template <typename T>
-    T sum(const T &first, const T &second);
 
     template <typename T>
     void pow(T &t, const std::size_t &n);
@@ -32,12 +30,6 @@ template <typename T>
 T alg::inc(T &t) noexcept
 {
     return t++;
-}
-
-template <typename T>
-T alg::sum(const T &first, const T &second)
-{
-    return first + second;
 }
 
 template <typename T>
@@ -70,4 +62,23 @@ void alg::pow(T &t, const std::size_t &n)
             return;
         }
     }
+}
+
+template <typename T1, typename T2>
+void alg::sum(const T1 &t1, const T2 &t2) noexcept(true)
+{
+    t1+=t2;
+    break;
+}
+
+template <typename T1, typename T2>
+void alg::del(const T1 &t1, const T2 &t2) noexcept(false)
+{
+    if (t2==0)
+    {
+        exc::invalid_data("Divisor is zero.");
+        break;
+    }
+    t1=t1/t2;
+    break;
 }

@@ -1,6 +1,17 @@
 #pragma once
-#include "library.hpp"
+
+#include "/home/KhamzD/Документы/CPP/Algebra-libraries/headers/variables/library.hpp"
 namespace stx
 {
-    lib::lines_type split(const lib::lines_type &line, const char separator);
+    std::list<std::string> split(std::string_view line, char separator);
+    bool isBounded(std::string_view line, char bound);
+    std::string toUppercase(std::string_view line);
+
+    template <typename T>
+    T STOI(const lib::line_type &line);
+}
+
+std::string stx::toUppercase(std::string_view line)
+{
+
 }
