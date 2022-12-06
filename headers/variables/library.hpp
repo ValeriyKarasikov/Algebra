@@ -15,14 +15,12 @@ namespace lib
                                                                 line_type>;
     using size_type = std::size_t;
 
-    floating_point_type line_to_float(line_type &line);       // типо приватные
-    integer_number_type line_to_int(line_type &line);         // методы
+    floating_point_type line_to_float(line_type &line);
+    integer_number_type line_to_int(line_type &line);
 
-    void assign(lines_type &string, library_type &library);   // изменить
-                                                              // значение
-                                                              // переменной
-    // x = 4.2 or x = y
-    void interpret(floating_point_type &value, line_type &string, library_type &library); // это set()
-    void interpret(integer_number_type &value, line_type &string, library_type &library);
+    void interpret(floating_point_type &value, line_type &string,
+                                               library_type &library);
+    void interpret(integer_number_type &value, line_type &string,
+                                               library_type &library);
     void interpret(line_type &value, line_type &string, library_type &library);
 }

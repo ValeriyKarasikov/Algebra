@@ -53,8 +53,6 @@ class Database
     template<typename T>
       T get(const line_type &name); // возвращает значение переменной
 
-    bool find (const char &a);
-
   private:
 
     line_type signs_;
@@ -64,6 +62,7 @@ class Database
       void forEachConversionFunction_(const Function &function,
           const Condition &condition) const;
 
+    bool find_(const char &a);
 };
 
 template <typename... Ts>
@@ -99,7 +98,7 @@ bool Database<Ts...>::exists(line_type name) const
   template <typename... Ts>
 void Database<Ts...>::set(const line_type& name, const line_type& value)
 {
-  if (this->find(value.back()))
+  if (this->find_(value.back()))
   {
     const auto sign{value.back()};
     auto signs_ci{this->signs_.cbegin()};
@@ -122,8 +121,10 @@ template <typename T>
 void Database<Ts...>::set(line_type name, T value)
 {
   typename std::map<line_type, Unit>::iterator it = this->variables.find(name);
-  if (it == this->variables.end())
-    this->variables.insert({name, Unit{std::make_shared<T>(value, typeid(decltype(value)))}});
+  if (it == this->variables.end()){
+    this->variables.insert({name, Unit{std::make_shared<T>(value,
+                                                   typeid(decltype(value)))}});
+  }
   else
     this->assign<T>(value, name);
 }
@@ -131,7 +132,7 @@ void Database<Ts...>::set(line_type name, T value)
 template <typename... Ts>
 void Database<Ts...>::assign(line_type& value, line_type& name)
 {
-  if (this->find(value.back()))
+  if (this->find_(value.back()))
   {
     const auto sign{value.back()};
     auto signs_ci{this->signs_.cbegin()};
@@ -204,7 +205,7 @@ T Database<Ts...>::get(const line_type &name)
 }
 
 template <typename... Ts>
-bool Database<Ts...>::find(const char& a)
+bool Database<Ts...>::find_(const char& a)
 {
   for (auto i : this->signs_)
   {

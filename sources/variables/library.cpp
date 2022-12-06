@@ -1,4 +1,4 @@
-#include "//home//poodelay//Документы//cpp//Algebra-main//headers//variables//library.hpp"
+#include "library.hpp"
 
 lib::floating_point_type lib::line_to_float(line_type &line)
 {
@@ -42,9 +42,4 @@ void lib::interpret(line_type &value, line_type &string, library_type &library)
   {
     value = library.get<line_type>(string);
   }
-}
-
-void lib::assign(lines_type &string, library_type &library)
-{
-
 }
