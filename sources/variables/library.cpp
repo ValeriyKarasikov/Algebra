@@ -1,28 +1,50 @@
 #include "//home//poodelay//Документы//cpp//Algebra-main//headers//variables//library.hpp"
 
-void lib::line_to_line(line_type &line)
+lib::floating_point_type lib::line_to_float(line_type &line)
 {
+  line.pop_back();
+  return std::stof(line);
 }
 
-void lib::line_to_float(line_type &line)
+lib::integer_number_type lib::line_to_int(line_type &line)
 {
-  std::stof(line);
+  line.pop_back();
+  return std::stoi(line);
 }
 
-void lib::line_to_int(line_type &line)
+void lib::interpret(floating_point_type &value, line_type &string, library_type &library)
 {
-  std::stoi(line);
+  try {
+    value = std::stof(string);
+  }
+  catch(...){
+    value = library.get<floating_point_type>(string);
+  }
 }
 
-void lib::interpret(floating_point_type &value, lines_type string/*, const library_type &library*/)
+void lib::interpret(integer_number_type &value, line_type &string, library_type &library)
 {
+  try {
+    value = std::stoi(string);
+  }
+  catch(...){
+    value = library.get<integer_number_type>(string);
+  }
 }
 
-void lib::interpret(integer_number_type &value, lines_type string/*, const library_type &library*/)
+void lib::interpret(line_type &value, line_type &string, library_type &library)
 {
+  if ((string.back()) == '"')
+  {
+    value = string;
+  }
+  else
+  {
+    value = library.get<line_type>(string);
+  }
 }
 
-
-void lib::interpret(line_type &path, lines_type string/*, const library_type &library*/)
+void lib::assign(lines_type &string, library_type &library)
 {
+
 }
