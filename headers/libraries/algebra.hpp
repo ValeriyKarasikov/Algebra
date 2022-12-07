@@ -35,32 +35,6 @@ T alg::inc(T &t) noexcept
 template <typename T>
 T alg::pow(T &t, const lib::integer_number_type &n)
 {
-    /*    {
-            std::size_t i = 0;
-            if (n = 0)
-            {
-                return 0;
-            }
-            else if (n > 0)
-            {
-                while (n > i)
-                {
-                    t *= t;
-                    i += 1;
-                }
-                return t;
-            }
-            else if (n < 0)
-            {
-                while (n < i)
-                {
-                    t *= t;
-                    i -= 1;
-                }
-                t = 1 / t;
-                return 1/t;
-            }
-        }*/
     if (n < 0)
     {
         return 1 / alg::pow(t, -n);
