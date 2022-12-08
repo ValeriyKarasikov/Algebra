@@ -6,12 +6,12 @@
 namespace term
 {
     // prefix -- некоторое сообщение перед вводом, например, текст "enter here >> "
-    void input(std::string &line, std::string_view prefix);
+    void input(std::string &line, std::string prefix);
     template <char end = '\n', char sep = ' ', typename... T>
     void display(const T &...t);
 }
 
-void term::input(std::string &line, std::string_view prefix /*,std::string_view changed_prefix*/)
+void term::input(std::string &line, std::string prefix /*,std::string_view changed_prefix*/)
 {
     std::cout << prefix << ": "; // тут допустим введите значение
     std::cin >> line;

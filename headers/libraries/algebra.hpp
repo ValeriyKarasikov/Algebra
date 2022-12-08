@@ -18,10 +18,10 @@ namespace alg
     template <typename T>
     void pow(T &t, const std::size_t &n);
 
-    template <typename T1, typename T2>
-    void sum(const T1 &t1, const T2 &t2) noexcept(true);
+    template <typename T>
+    void sum(const T &t1, const T &t2) noexcept(true);
 
-    template <typename T1, typename T2>
+    template <typename T, typename T1, typename T2>
     void del(const T1 &t1, const T2 &t2) noexcept(false);
 
 }
