@@ -23,19 +23,19 @@ namespace exc
                                                        "Invalid data. Code: " + message + "."} {}
     };
 
-    struct unknown_data : public Exception //указано неизвестное значение параметра команды
+    struct unknown_data : public Exception // указано неизвестное значение параметра команды
     {
         unknown_data(const std::string &message) : Exception{
                                                        "Unknown data. Code: " + message + "."} {}
     };
 
-    struct unspecified_data : public Exception //не указано значение параметра команды
+    struct unspecified_data : public Exception // не указано значение параметра команды
     {
         unspecified_data(const std::string &message) : Exception{
                                                            "Unspecified data. Code: " + message + "."} {}
     };
 
-    struct undefined_data : public Exception //не задано значение параметра команды
+    struct undefined_data : public Exception // не задано значение параметра команды
     {
         undefined_data(const std::string &message) : Exception{
                                                          "Undefined data. Code: " + message + "."} {}

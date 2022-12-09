@@ -8,8 +8,7 @@
 
 namespace alg
 {
-    using value_type = lib::floating_point_type;
-
+    // using value_type = lib::floating_point_type;
     // value_type sum(const value_type &first, const value_type &second);
 
     template <typename T>
@@ -18,11 +17,11 @@ namespace alg
     template <typename T>
     void pow(T &t, const std::size_t &n);
 
-    template <typename T>
-    void sum(const T &t1, const T &t2) noexcept(true);
+    template <typename T1, typename T2>
+    auto sum(const T1 &t1, const T2 &t2) noexcept(true);
 
-    template <typename T, typename T1, typename T2>
-    void del(const T1 &t1, const T2 &t2) noexcept(false);
+    template <typename T1, typename T2>
+    auto del(const T1 &t1, const T2 &t2) noexcept(false);
 
 }
 
@@ -49,14 +48,14 @@ T alg::pow(T &t, const lib::integer_number_type &n)
     }
 }
 
-template <typename T>
-T alg::sum(const T &t1, const T &t2) noexcept(true)
+template <typename T1, typename T2>
+auto alg::sum(const T1 &t1, const T2 &t2) noexcept(true)
 {
     return t1 + t2;
 }
 
-template <typename T, typename T1, typename T2>
-T alg::del(const T1 &t1, const T2 &t2) noexcept(false)
+template <typename T1, typename T2>
+auto alg::del(const T1 &t1, const T2 &t2) noexcept(false)
 {
     if (t2 == 0)
     {

@@ -2,6 +2,11 @@
 
 #include <fstream>
 #include <iostream>
+struct Pass
+{
+    template <typename... T>
+    Pass(const T &...) {}
+};
 
 namespace term
 {
@@ -16,16 +21,11 @@ void term::input(std::string &line, std::string prefix /*,std::string_view chang
     std::cout << prefix << ": "; // тут допустим введите значение
     std::cin >> line;
     // std::cout << changed_prefix << line << std::endl; а тут допустим это значение =
-    // break;
-    return;
 }
 
 template <char end = '\n', char sep = ' ', typename... T>
 void term::display(const T &...t)
 {
-    while (t != end)
-    {
-        std::cout << t << sep;
-    }
-    return;
+    Pass{(std::cout << t << sep, 1)...};
+    std::cout << end;
 }
