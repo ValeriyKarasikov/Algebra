@@ -24,3 +24,4 @@ namespace lib
                                                library_type &library);
     void interpret(line_type &value, line_type &string, library_type &library);
 }
+

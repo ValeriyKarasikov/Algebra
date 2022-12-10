@@ -52,6 +52,7 @@ class Database
                                                      // переменных
     template<typename T>
       T get(const line_type &name); // возвращает значение переменной
+    std::type_index getTypeId(line_type &name);
 
   private:
 
@@ -196,7 +197,8 @@ T Database<Ts...>::get(const line_type &name)
   if (it != this->variables.end())
   {
     if (it->second.index == typeid(T))
-      return *(T*)it->second.value;
+      // std::shared_ptr: get(), operator*()
+      return *(T*)it->second.value.get();
     else
       throw std::invalid_argument ("Variable type specified incorrectly");
   }
@@ -213,4 +215,14 @@ bool Database<Ts...>::find_(const char& a)
       return true;
   }
   throw std::invalid_argument("Variable type specified incorrectly");
+}
+
+template <typename... Ts>
+std::type_index Database<Ts...>::getTypeId(line_type &name)
+{
+  typename std::map<line_type, Unit>::iterator it = this->variables.find(name);
+  if (it != this->variables.end())
+    return it->second;
+  else
+    throw std::out_of_range("Variable don't exist");
 }
