@@ -9,6 +9,7 @@
 #include "syntax.hpp"
 #include "exception.hpp"
 #include "terminal.hpp"
+#include "file.hpp"
 using namespace std;
 
 class Interpreter
@@ -19,6 +20,8 @@ public:
     //iostream& operator>> (istream& is);
 private:
     lib::library_type library_;
+    lib::line_type Name,Value;
+    lib::integer_number_type ValueInt;
 
     template <typename T1, typename T2>
     void term_( lib::line_type path_to_log); //работа с терминалом 
@@ -70,10 +73,13 @@ else
                
         getline(input_term_,LineTerminal);
 
+       
+
+        ListLineTerm = stx::split(LineTerminal, ',');
+
         if (ListLineTerm.empty())
         {exit;}
 
-        ListLineTerm = stx::split(LineTerminal, ',');
         KeywordsTerminal = ListLineTerm.front();
         stx::toUppercase(KeywordsTerminal);
 
@@ -88,15 +94,15 @@ else
             if (KeywordsTerminal == "SUM")
             {
                 term::input(LineTerminal,"enter the two variables you want to add separated by commas");
-                ListLineTerm = stx::split(LineTerminal,',');
-                Processor::sum(ListLineTerm);
+               //ListLineTerm = stx::split(LineTerminal,',');
+                term::display(Processor::sum(ListLineTerm));
             }
 
             if (KeywordsTerminal == "DEL")
             {
                 term::input(LineTerminal,"enter variables in order of subtraction (Example: a, b => a-b)");
-                ListLineTerm = stx::split(LineTerminal,',');
-                processor_.del(ListLineTerm);
+                //ListLineTerm = stx::split(LineTerminal,',');
+                term::display(Processor::del(ListLineTerm));
             }              
         
         }
@@ -148,6 +154,7 @@ void Interpreter::file_( const lib::line_type &path_to_log)
     lib::lines_type ListLineFile;
     lib::line_type LineFile ;
     lib::line_type KeywordsFile;
+    //auto it = ListLineFile.begin();
 
    // input_file_.open(path_to_log);
 
@@ -157,10 +164,10 @@ void Interpreter::file_( const lib::line_type &path_to_log)
             getline(input_file_,LineFile);
             ListLineFile = stx::split(LineFile, ',');
             KeywordsFile = ListLineFile.front();*/
-            
-            
-            
+        
             file::read(input_file_,LineFile);
+
+            ListLineFile = stx::split (LineFile, ',');
 
             if (ListLineFile.empty())
             {
@@ -168,14 +175,21 @@ void Interpreter::file_( const lib::line_type &path_to_log)
                 exit;
             }
 
-            ListLineFile = stx::split (LineFile, ',');
             KeywordsFile = ListLineFile.front();
             stx::toUppercase (KeywordsFile);
 
-              if (processor_.commands_.count(KeywordsFile))
+
+        if (processor_.commands_.count(KeywordsFile))
         {//term::display(processor_.commands_.at(KeywordsTerminal));
             if (KeywordsFile == "POW")
             {
+                ListLineFile.pop_front();
+                Name = ListLineFile.front();
+                Value = ListLineFile.back();
+                auto Index = library_.getTypeId(Name);
+
+
+
 
             }
 
@@ -183,44 +197,56 @@ void Interpreter::file_( const lib::line_type &path_to_log)
             {} 
 
             if (KeywordsFile == "SUM")
-            {
-              
-            }
+            {}
 
             if (KeywordsFile == "DEL")
-            {
-               
-            }              
+            {}              
         
         }
 
         if (preprocessor_.commands_.count(KeywordsFile))
         {//term::display(preprocessor_.commands_.at(KeywordsFile));
             if (KeywordsFile == "SET")
-            {}
+            {
+                ListLineFile.pop_front();
+                ListLineFile.pop_back();
+                Value = ListLineFile.back();
+            }
 
             if (KeywordsFile == "DEL")
-            {}                      
+            {
+                Name = ListLineFile.back();
+                library_.erase(Name);
+            }                      
 
             if (KeywordsFile == "CLEARPRE")
-            {}             
+            {input_file_.clear();}             
         }
         
         if (postprocessor_.commands_.count(KeywordsFile))
         {
             if (KeywordsFile == "SIZE")
-            {}
+            {
+                
+                lib::size_type Size = library_.size();
+                lib::line_type StringSize = to_string(Size);
+                file::write(input_file_,StringSize);//???????
+            }
               
             if (KeywordsFile == "ALLNAMECONSOLE" )
-            {}
+            {std::cout << "Lol, are you stupid? We work in file, not console" << std::endl;}
               
             if (KeywordsFile == "ALLNAMEFILE" )
             {
-
+                ListLineFile = library_.allNames();
+                for (auto i = ListLineFile.cbegin(); i != ListLineFile.cend(); i++)
+                {
+                    file::write(input_file_,*i);
+                }
             }
 
             if (KeywordsFile == "CLEARPOST")
-            {}
+            {input_file_.clear();}
         }
             
             ListLineFile.clear();
