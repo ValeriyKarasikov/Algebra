@@ -1,27 +1,11 @@
 #include "library.hpp"
 #include <map>
-#include "Preprocessor.hpp"
-#include <fstream>
+#include "Processor.hpp"
 
-Preprocessor::Preprocessor(const lib::library_type &library) : library_{library}, commands_ 
-                { {"SET",&Preprocessor::set},
-                {"DEL",&Preprocessor::del},
-                {"CLEARPRE",&Preprocessor::clearPre}}
+//template <typename T>
+Processor::Processor(const lib::library_type &library) : library_{library} ,commands_ 
+{{"POW", &Processor::pow},
+{"INC",&Processor::inc},
+{"SUM",&Processor::sum},
+{"DEL",&Processor::del}}
 {}
-
-
-/*
-void Preprocessor::invoke(const lib::lines_type::value_type &head, 
-                                    const lib::lines_type &others)
-{
-    if (this->commands_.find(head) !=this->commands_.end())
-    {
-        (this->*this->commands_[head])(others);
-    }
-    else
-    {
-        //throw something
-    }
-}
- 
-*/
