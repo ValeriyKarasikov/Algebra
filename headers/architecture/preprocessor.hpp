@@ -39,14 +39,13 @@ void Preprocessor::set(lib::lines_type &lines)
 {  
   KeyWord = lines.front();
   lines.pop_front();
-
-  TypeValue = lines.back();
   lines.pop_back();
   
   Value = lines.back();
   Name = lines.front();
   
   library_.set(Name,Value);
+  
 }
 
 template <typename T>
