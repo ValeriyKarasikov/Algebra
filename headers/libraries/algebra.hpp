@@ -1,27 +1,23 @@
 #pragma once
 
-// #include <concepts>
-
-#include <cstdint> // std::size_t
-#include "library.hpp"
-#include "exception.hpp"
+#include <cstdint>       // std::size_t
+#include "library.hpp"   // подключаем библеотеку Дамира
+#include "exception.hpp" // подключаем наш файл
 
 namespace alg
 {
-    // using value_type = lib::floating_point_type;
-    // value_type sum(const value_type &first, const value_type &second);
 
     template <typename T>
-    void inc(T &t) noexcept;
+    T inc(T &t) noexcept; // инкрементация
 
     template <typename T>
-    void pow(T &t, const std::size_t &n);
+    T pow(T &t, const std::size_t &n); // степень
 
     template <typename T1, typename T2>
     auto sum(const T1 &t1, const T2 &t2) noexcept(true);
 
     template <typename T1, typename T2>
-    auto del(const T1 &t1, const T2 &t2) noexcept(false);
+    auto del(const T1 &t1, const T2 &t2) noexcept(false); // деление
 
 }
 
@@ -32,7 +28,7 @@ T alg::inc(T &t) noexcept
 }
 
 template <typename T>
-T alg::pow(T &t, const lib::integer_number_type &n)
+T alg::pow(T &t, const lib::integer_number_type &n) // только степень int
 {
     if (n < 0)
     {
@@ -61,5 +57,8 @@ auto alg::del(const T1 &t1, const T2 &t2) noexcept(false)
     {
         throw exc::invalid_data("Divisor is zero.");
     }
-    return t1 / t2;
+    else
+    {
+        return t1 / t2;
+    }
 }
