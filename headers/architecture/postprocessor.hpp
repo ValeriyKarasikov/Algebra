@@ -6,6 +6,7 @@
 #include <map>
 #include <string>
 #include <list>
+using namespace std;
 
 class Postprocessor 
 {
@@ -20,8 +21,8 @@ public:
 
 private:
     void size (const lib::lines_type &lines); //размер листа (кол-во переменных)
-    void allNameConsol (const lib::lines_type &lines);//вывод в консоль все имена переменных
-    void allNameFile (const lib::lines_type &lines); //вывод в файл все имена переменных
+    void allNameConsol (lib::lines_type &lines);//вывод в консоль все имена переменных
+    void allNameFile (lib::lines_type &lines); //вывод в файл все имена переменных
     void clearPost(const lib::lines_type &lines); //отчистка файла/консоли
 
 };
@@ -30,11 +31,18 @@ private:
 void Postprocessor::size (const lib::lines_type &lines)
 {term::display(lib::library_type::size);}
 
-void Postprocessor::allNameConsol (const lib::lines_type &lines)
-{term::display(lib::library_type::allNames);}
+void Postprocessor::allNameConsol (lib::lines_type &lines)
+{
+    lines = library_.allNames();
 
-void Postprocessor::allNameFile (const lib::lines_type &lines)
-{}    
+    for (auto i = lines.cbegin(); i != lines.cend(); ++i)
+    {cout << *i << endl;}
+}
+
+void Postprocessor::allNameFile (lib::lines_type &lines)
+{
+    
+}    
 
 void Postprocessor::clearPost(const lib::lines_type &lines)
 {}   
