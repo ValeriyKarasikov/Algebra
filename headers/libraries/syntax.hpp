@@ -20,7 +20,7 @@ std::list<std::string> split(std::string line, char sep)
     std::list<std::string> list;    // создаём лист
     lib::integer_number_type i = 0; // итератор для проходки по стрингу
     lib::line_type stroka;          // хранит временную строку для записи в лист
-    char sep2 = 34;                 // кавычки
+    char sep2 = '\"';
     while (i < line.size())
     {
         if (line[i] == sep2)
@@ -36,6 +36,7 @@ std::list<std::string> split(std::string line, char sep)
         }
         else if (line[i] != sep)
         {
+
             if (line[i] != ' ')
             {
                 stroka.push_back(line[i]);
@@ -43,12 +44,14 @@ std::list<std::string> split(std::string line, char sep)
         }
         else if (line[i] == sep)
         {
-            list.push_back(stroka);
-            stroka.clear();
+            if (stroka.size() != 0)
+            {
+                list.push_back(stroka);
+                stroka.clear();
+            }
         }
         i++;
     }
-    stroka.clear();
     return list;
 }
 
