@@ -26,11 +26,13 @@ std::list<std::string> split(std::string line, char sep)
         if (line[i] == sep2)
         {
             i++;
+            stroka.push_back('\"');
             while (line[i] != sep2)
             {
                 stroka.push_back(line[i]);
                 i++;
             }
+            stroka.push_back('\"');
             list.push_back(stroka);
             stroka.clear();
         }
