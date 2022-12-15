@@ -29,7 +29,7 @@ std::list<std::string> split(std::string line, char sep)
                 stroka.push_back(line[i]);
             }
         }
-        else if (line[i] == sep)
+        else if (line[i] == sep or i == '\0')
         {
             if (stroka.size() != 0)
             {
@@ -39,6 +39,11 @@ std::list<std::string> split(std::string line, char sep)
         }
         i++;
     }
+    if (i == line.size())
+    {
+        list.push_back(stroka);
+    }
+    stroka.clear();
     return list;
 }
 
