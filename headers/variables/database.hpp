@@ -30,7 +30,7 @@ class Database
     // 1) набор символов, отвечающих за тип
     // 2) набор функций преобразования из строк к конкретный тип
 
-    Database(const char signs[N], function_type<Ts>... functions);
+    Database(const char (&signs)[N], function_type<Ts>... functions);
     ~Database();
 
     bool exists(line_type name) const;               // существование
@@ -80,7 +80,7 @@ void Database<Ts...>::forEachConversionFunction_(const Func &func,
 }
 
 template <typename... Ts>
-Database<Ts...>::Database(const char signs[N], function_type<Ts>... functions) :
+Database<Ts...>::Database(const char (&signs)[N], function_type<Ts>... functions) :
   signs_{signs}, functions_{functions...}
 {
 }
@@ -190,7 +190,7 @@ void Database<Ts...>::erase(line_type name)
 }
 
 template <typename... Ts>
-template<typename T>
+template <typename T>
 T Database<Ts...>::get(const line_type &name)
 {
   typename std::map<line_type, Unit>::iterator it = this->variables.find(name);
