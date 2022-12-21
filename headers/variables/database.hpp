@@ -222,7 +222,7 @@ std::type_index Database<Ts...>::getTypeId(line_type &name)
 {
   typename std::map<line_type, Unit>::iterator it = this->variables.find(name);
   if (it != this->variables.end())
-    return it->second;
+    return it->second.index;
   else
     throw std::out_of_range("Variable don't exist");
 }
