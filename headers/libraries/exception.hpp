@@ -8,7 +8,7 @@ namespace exc
     class Exception : public std::exception
     {
     public:
-        const char *what() const noexcept;
+        const char *what() const noexcept;//noexcept - не выбрасывает иссключение
 
     protected:
         explicit Exception(const std::string &message) noexcept;
