@@ -1,10 +1,9 @@
 #pragma once
 
-// #include <string_view>
 #include <string>
-#include <algorithm> // для перевода в капс
 
 #include "library.hpp"
+
 namespace stx
 {
     std::list<std::string> split(std::string line, char separator); // разделяет по сепаратору
