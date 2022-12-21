@@ -123,8 +123,8 @@ void Database<Ts...>::set(line_type name, T value)
 {
   typename std::map<line_type, Unit>::iterator it = this->variables.find(name);
   if (it == this->variables.end()){
-    this->variables.insert({name, Unit{std::make_shared<T>(value,
-                                                   typeid(decltype(value)))}});
+    this->variables.insert({name, Unit{std::make_shared<T>(value),
+                                                   typeid(decltype(value))}});
   }
   else
     this->assign<T>(value, name);
@@ -156,7 +156,7 @@ void Database<Ts...>::assign(T& value, line_type &name)
 {
   typename std::map<line_type, Unit>::iterator it = this->variables.find(name);
   if (it == this->variables.end())
-    *it = {name, Unit{std::make_shared<T>(value, typeid(decltype(value)))}};
+    *it = {name, Unit{std::make_shared<T>(value), typeid(decltype(value))}};
   else
     throw std::out_of_range("variable don't exist");
 }
