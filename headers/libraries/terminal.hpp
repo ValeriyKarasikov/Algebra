@@ -18,11 +18,10 @@ namespace term
     void display(const T &...t);
 }
 
-void term::input(std::string &line, std::string prefix /*,std::string_view changed_prefix*/)
+void term::input(std::string &line, std::string prefix)
 {
     std::cout << prefix << ": "; // тут допустим введите значение
     std::cin >> line;
-    // std::cout << changed_prefix << line << std::endl; а тут допустим это значение =
 }
 
 template <char end = '\n', char sep = ' ', typename... T>
