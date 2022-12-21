@@ -1,9 +1,11 @@
 #include "syntax.hpp"
 
+#include <algorithm> // для перевода в капс
+
 std::list<std::string> split(std::string line, char sep)
 {
     std::list<std::string> list;    // создаём лист
-    lib::integer_number_type i = 0; // итератор для проходки по стрингу
+    lib::integer_number_type i = 0; // итератор для проходки по строке
     lib::line_type stroka;          // хранит временную строку для записи в лист
     char sep2 = '\"';
     while (i < line.size())
@@ -23,7 +25,6 @@ std::list<std::string> split(std::string line, char sep)
         }
         else if (line[i] != sep)
         {
-
             if (line[i] != ' ')
             {
                 stroka.push_back(line[i]);
