@@ -8,10 +8,10 @@ namespace alg
 {
 
     template <typename T>
-    T inc(T &t) noexcept; // инкрементация
+    auto inc(T &t) noexcept; // инкрементация
 
     template <typename T>
-    T pow(T &t, const std::size_t &n); // степень
+    auto pow(T &t, const std::size_t &n); // степень
 
     template <typename T1, typename T2>
     auto sum(const T1 &t1, const T2 &t2) noexcept(true);
@@ -22,13 +22,13 @@ namespace alg
 }
 
 template <typename T>
-T alg::inc(T &t) noexcept
+auto alg::inc(T &t) noexcept
 {
     return ++t;
 }
 
 template <typename T>
-T alg::pow(T &t, const lib::integer_number_type &n) // только степень int
+auto alg::pow(T &t, const lib::integer_number_type &n) // степень только int
 {
     if (n < 0)
     {
